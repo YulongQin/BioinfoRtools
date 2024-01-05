@@ -1,48 +1,48 @@
-Package: BioinfoRtools
 Type: Package
+Package: BioinfoRtools
 Title: A comprehensive bioinformatics R package toolbox
 Version: 1.0.0
 Authors@R: c(
- person(given = "Yulong", family = "Qin", email = "524583919@qq.com", role  = c("aut", "cre", "cph"), comment = c(ORCID = "")),
- person(given = "Yulong", family = "Qin", email = "524583919@qq.com", role  = "ctb")
+    person("Yulong", "Qin", , "524583919@qq.com", role = c("aut", "cre", "cph")),
+    person("Yulong", "Qin", , "524583919@qq.com", role = "ctb")
   )
 Maintainer: Yulong Qin <524583919@qq.com>
 Description: A comprehensive bioinformatics R package toolbox.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-biocViews:
-Imports: 
-    stats,
-    utils,
-    rlang,
-    DESeq2 (>= 1.38.3),
-    dplyr (>= 1.1.4),
-    tibble,
-    ggplot2,
-    magrittr (>= 2.0.3),
-    clusterProfiler,
-    org.Hs.eg.db,
-    DOSE,
-    patchwork,
-    limma,
-    GSVA,
-    GSEABase,
-    ggplotify,
-    pheatmap,
-    psych,
-    easyPubMed,
-    scales,
-    ggsci,
-    stringr,
 Depends: 
     R (>= 3.6.0)
-LazyData: true
+Imports: 
+    clusterProfiler,
+    DESeq2 (>= 1.38.3),
+    DOSE,
+    dplyr (>= 1.1.4),
+    easyPubMed,
+    ggplot2,
+    ggplotify,
+    ggsci,
+    GSEABase,
+    GSVA,
+    limma,
+    magrittr (>= 2.0.3),
+    org.Hs.eg.db,
+    patchwork,
+    pheatmap,
+    psych,
+    rlang,
+    scales,
+    stats,
+    stringr,
+    tibble,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+biocViews:
 Config/testthat/edition: 3
-VignetteBuilder: knitr
-
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
