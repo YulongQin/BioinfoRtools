@@ -14,7 +14,7 @@
 #### ----- Function ------ ####
 #' convert the string separator
 #'
-#' @name split-paste
+#' @name split_paste
 #' @title convert the string separator
 #' @description convert the string separator
 #' @param string the string
@@ -23,8 +23,8 @@
 #'
 #' @return a string
 #' @author Yulong Qin
-#' @seealso \code{\link{shorten_names}},\code{\link{split-paste}},
-#' \code{\link{pubmed_search}},\code{\link{manipulate-set}}
+#' @seealso \code{\link{shorten_names}}, \code{\link{split_paste}},
+#' \code{\link{pubmed_search}}, \code{\link{manipulate_set}}
 #'
 #' @examples \dontrun{
 #' a <- "a_b_c_d_e"

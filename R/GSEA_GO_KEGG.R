@@ -38,7 +38,8 @@
 #' @import ggplot2
 #' @import DOSE
 #' @import patchwork
-#' @export GSEA_GO_KEGG
+#' @export
+#'
 GSEA_GO_KEGG <- function(DEGs = NULL, # 输入的DEGs必须是经过处理的仅有c('SYMBOL','LogFC')两列的df
                          simplify_index = F, maxGSSize = 500,
                          grp_nm = "GSEA_GO_KEGG", dir_nm = "GSEA_GO_KEGG") {

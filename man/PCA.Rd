@@ -2,9 +2,12 @@
 % Please edit documentation in R/PCA.R
 \name{PCA}
 \alias{PCA}
+\alias{PCA.data.frame}
 \title{PCA plots are drawn according to groups}
 \usage{
 PCA(countdata, group, grp_nm = "PCA", scale = T)
+
+\method{PCA}{data.frame}(countdata, group, grp_nm = "PCA", scale = T)
 }
 \arguments{
 \item{countdata}{the count data matrix}
@@ -20,18 +23,34 @@ PCA plots are drawn according to groups
 }
 \details{
 PCA plots are drawn according to groups
+
+this function use \code{ggplot()} to draw PCA plots according to groups
 }
+\section{Useful mutate functions}{
+
+\itemize{
+\item \code{\link{+}}, \code{\link{-}}, \code{\link[=log]{log()}}, etc., for their usual mathematical meanings
+}
+
+...
+}
+
 \examples{
 \dontrun{
+
+# this is a example
 source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/PCA.R")
 df <- iris[1:4] \%>\%
   t() \%>\%
   as.data.frame()
 PCA(df, iris$Species, scale = F)
 }
+
 }
 \seealso{
-\code{\link{PCA}},\code{\link{HTmap}}
+\code{\link{PCA}}, \code{\link{HTmap}}
+
+\code{\link[=ggplot]{ggplot()}}, \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} which this function wraps.
 }
 \author{
 Yulong Qin

@@ -60,7 +60,8 @@
 #' @importFrom magrittr add
 #' @importFrom dplyr select mutate filter arrange group_by summarise slice
 #' @importFrom tibble column_to_rownames
-#' @export GSVA_ssGSEA
+#' @export
+#'
 GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
                         gsva_mat_go_scale = NULL,
                         gsva_mat_kegg_scale = NULL,

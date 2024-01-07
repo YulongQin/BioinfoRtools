@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of BioinfoRtools is to ...
+The BioinfoRtools is  A comprehensive bioinformatics R package toolbox
 
 ## Installation
 
@@ -26,29 +26,43 @@ You can install the development version of BioinfoRtools like so:
 
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("YulongQin/BioinfoRtools")
 ```
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example,echo=T}
 library(BioinfoRtools)
 ## basic example code
+# ?DEGs_DESeq2
+# ?DEGs_Wilcoxon
+# data(countdata)
+# data(coldata)
+res <- DEGs_DESeq2(
+  countdata=countdata,
+  group=coldata$condition,
+  case = "treated",
+  ctrl = "untreated",
+  covariate = NULL,
+  updown_thres = 1,
+  rate_sap = 0.1,
+  OUT_df_index = FALSE,
+  updown_index = FALSE,
+  p_value = 0.05,
+  padj_value = 0.05,
+  grp_nm = "DEGs_DESeq2",
+  dir_nm = "DEGs_DESeq2"
+)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Here's how to use some of the graphing functions`PCA` and `HTmap`:
 
-```{r cars}
-summary(cars)
+```{r PCA}
+PCA(countdata=countdata,
+    group=coldata$condition, 
+    grp_nm = "PCA", 
+    scale = T)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

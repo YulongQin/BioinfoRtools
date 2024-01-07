@@ -14,6 +14,9 @@
 #### ----- Function ------ ####
 #' PCA plots are drawn according to groups
 #'
+#' this function use `ggplot()` to draw PCA plots according to groups
+#'
+#' @name PCA
 #' @title PCA plots are drawn according to groups
 #' @description PCA plots are drawn according to groups
 #' @param countdata the count data matrix
@@ -23,20 +26,37 @@
 #'
 #' @return NULL
 #' @author Yulong Qin
-#' @seealso \code{\link{PCA}},\code{\link{HTmap}}
+#' @seealso \code{\link{PCA}}, \code{\link{HTmap}}
+#' @seealso [ggplot()], [ggplot2::ggplot()] which this function wraps.
+#'
+#' @section Useful mutate functions:
+#'
+#' * [`+`], [`-`], [log()], etc., for their usual mathematical meanings
+#'
+#' ...
 #'
 #' @examples \dontrun{
+#'
+#' # this is a example
 #' source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/PCA.R")
 #' df <- iris[1:4] %>%
 #'   t() %>%
 #'   as.data.frame()
 #' PCA(df, iris$Species, scale = F)
 #' }
+#'
 #' @import ggplot2
 #' @importFrom stats prcomp
-#' @importFrom ggsci scale_color_nejm scale_fill_nejm scale_color_igv scale_fill_igv
-#' @export PCA
+#' @importFrom ggsci scale_color_nejm scale_fill_nejm scale_color_igv scale_fill_igv pal_lancet
+#' @export
+#'
 PCA <- function(countdata, group, grp_nm = "PCA", scale = T) {
+  UseMethod("PCA",countdata)
+}
+
+#' @export
+#' @rdname PCA
+PCA.data.frame <- function(countdata, group, grp_nm = "PCA", scale = T) {
   ### 1.library ####
   # suppressMessages({
   #   library(tidyverse)

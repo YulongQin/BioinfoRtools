@@ -12,7 +12,9 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.6.0)
 Imports: 
+    AnnotationDbi,
     clusterProfiler,
+    data.table,
     DESeq2 (>= 1.38.3),
     DOSE,
     dplyr (>= 1.1.4),
@@ -24,6 +26,8 @@ Imports:
     GSVA,
     limma,
     magrittr (>= 2.0.3),
+    Mfuzz,
+    multiMiR,
     org.Hs.eg.db,
     patchwork,
     pheatmap,
@@ -33,13 +37,15 @@ Imports:
     stats,
     stringr,
     tibble,
-    utils
+    utils,
+    WGCNA
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Remotes: 
 biocViews:
 Config/testthat/edition: 3
 Encoding: UTF-8

@@ -14,17 +14,17 @@
 #### ----- Function ------ ####
 #' computes the intersection, union, and difference sets between sets
 #'
-#' @name manipulate-set
+#' @name manipulate_set
 #' @title computes the intersection, union, and difference sets between sets
 #' @description computes the intersection, union, and difference sets between sets
 #' @param ... the input vectors
 #'
-#' @family manipulate-set
+#' @family manipulate_set
 #'
 #' @return a list of vectors
 #' @author Yulong Qin
-#' @seealso \code{\link{shorten_names}},\code{\link{split-paste}},
-#' \code{\link{pubmed_search}},\code{\link{manipulate-set}}
+#' @seealso \code{\link{shorten_names}}, \code{\link{split_paste}},
+#' \code{\link{pubmed_search}}, \code{\link{manipulate_set}}
 #'
 #' @examples \dontrun{
 #' source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/manipulate_set.R")
@@ -34,7 +34,7 @@
 NULL
 
 #' @export
-#' @rdname manipulate-set
+#' @rdname manipulate_set
 get_intersection <- function(...) {
   vectors <- list(...)
   intersection <- vectors[[1]]
@@ -47,7 +47,7 @@ get_intersection <- function(...) {
 }
 
 #' @export
-#' @rdname manipulate-set
+#' @rdname manipulate_set
 get_union <- function(...) {
   vectors <- list(...)
   union_set <- unique(unlist(vectors))
@@ -56,7 +56,7 @@ get_union <- function(...) {
 }
 
 #' @export
-#' @rdname manipulate-set
+#' @rdname manipulate_set
 get_intersection_list <- function(...) {
   vectors <- list(...)
   n <- length(vectors)
@@ -76,7 +76,7 @@ get_intersection_list <- function(...) {
 }
 
 #' @export
-#' @rdname manipulate-set
+#' @rdname manipulate_set
 get_union_list <- function(...) {
   vectors <- list(...)
   n <- length(vectors)

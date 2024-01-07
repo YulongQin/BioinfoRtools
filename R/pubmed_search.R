@@ -25,8 +25,8 @@
 #'
 #' @return my_abstracts_txt
 #' @author Yulong Qin
-#' @seealso \code{\link{shorten_names}},\code{\link{split-paste}},
-#' \code{\link{pubmed_search}},\code{\link{manipulate-set}}
+#' @seealso \code{\link{shorten_names}}, \code{\link{split_paste}},
+#' \code{\link{pubmed_search}}, \code{\link{manipulate_set}}
 #'
 #' @examples \dontrun{
 #' source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/pubmed_search.R")

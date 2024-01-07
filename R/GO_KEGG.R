@@ -35,13 +35,15 @@
 #'   simplify_index = F, grp_nm = "GO_KEGG", dir_nm = "GO_KEGG"
 #' )
 #' }
+#'
 #' @import clusterProfiler
 #' @import org.Hs.eg.db
 #' @import DOSE
 #' @import ggplot2
 #' @import patchwork
 #' @importFrom rlang is_empty
-#' @export GO_KEGG
+#' @export
+#'
 GO_KEGG <- function(updown = NULL, up = NULL, down = NULL, simplify_index = F,
                     maxGSSize = 500, grp_nm = "GO_KEGG", dir_nm = "GO_KEGG") {
   ### 1.library ####

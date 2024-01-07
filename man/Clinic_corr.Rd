@@ -46,7 +46,7 @@ Clinic_corr(
 }
 }
 \seealso{
-\code{\link{GO_KEGG}},\code{\link{GSEA_GO_KEGG}}, \code{\link{GSVA_ssGSEA}}
+\code{\link{GO_KEGG}}, \code{\link{GSEA_GO_KEGG}}, \code{\link{GSVA_ssGSEA}}
 }
 \author{
 Yulong Qin

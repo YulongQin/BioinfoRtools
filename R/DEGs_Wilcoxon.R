@@ -46,7 +46,8 @@
 #' @importFrom utils write.table
 #' @importFrom stats lm p.adjust residuals wilcox.test
 #' @importFrom dplyr select mutate filter arrange group_by summarise slice
-#' @export DEGs_Wilcoxon
+#' @export
+#'
 DEGs_Wilcoxon <- function(countdata, group, case = "case", ctrl = "ctrl", covariate = NULL,
                           updown_thres = 1, rate_sap = 0.3,
                           OUT_df_index = FALSE, updown_index = FALSE,
@@ -159,7 +160,7 @@ DEGs_Wilcoxon <- function(countdata, group, case = "case", ctrl = "ctrl", covari
     file = paste0(output_dir, "/DEGs_", grp_nm, ".txt"),
     row.names = T, col.names = NA, quote = F, sep = "\t"
   )
-  return(OUT2_df)
+  invisible(return(OUT2_df))
 }
 
 #### ----- Examples ------ ####

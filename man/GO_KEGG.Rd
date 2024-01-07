@@ -33,7 +33,7 @@ GO_KEGG(
 GO and KEGG analysis
 }
 \details{
-is details GO and KEGG analysis
+GO and KEGG analysis
 }
 \examples{
 \dontrun{
@@ -43,6 +43,7 @@ GO_KEGG(
   simplify_index = F, grp_nm = "GO_KEGG", dir_nm = "GO_KEGG"
 )
 }
+
 }
 \seealso{
 \code{\link{GO_KEGG}},\code{\link{GSEA_GO_KEGG}}, \code{\link{GSVA_ssGSEA}}

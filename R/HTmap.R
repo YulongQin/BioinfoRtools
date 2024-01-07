@@ -23,7 +23,7 @@
 #'
 #' @return NULL
 #' @author Yulong Qin
-#' @seealso \code{\link{PCA}},\code{\link{HTmap}}
+#' @seealso \code{\link{PCA}}, \code{\link{HTmap}}
 #'
 #' @examples \dontrun{
 #' source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/HTmap.R")
@@ -38,7 +38,8 @@
 #' @importFrom ggplotify as.ggplot
 #' @importFrom pheatmap pheatmap
 #' @importFrom dplyr across everything mutate if_else
-#' @export HTmap
+#' @export
+#'
 HTmap <- function(countdata, group, log2_index = T, scale_index = "row") {
   ### 1.library ####
   # suppressMessages({

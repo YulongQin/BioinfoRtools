@@ -26,7 +26,7 @@
 #'
 #' @return NULL
 #' @author Yulong Qin
-#' @seealso \code{\link{GO_KEGG}},\code{\link{GSEA_GO_KEGG}}, \code{\link{GSVA_ssGSEA}}
+#' @seealso \code{\link{GO_KEGG}}, \code{\link{GSEA_GO_KEGG}}, \code{\link{GSVA_ssGSEA}}
 #'
 #' @examples \dontrun{
 #' source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/Clinic_corr.R")
@@ -38,7 +38,8 @@
 #' }
 #' @importFrom psych corr.test
 #' @importFrom stats fisher.test median wilcox.test
-#' @export Clinic_corr
+#' @export
+#'
 Clinic_corr <- function(continuous = NULL, binary = NULL, # 行为样本，列为临床变量
                         grp_nm = "Clinic_corr1", dir_nm = "Clinic_corr",
                         skip_cont = F, skip_bina = F, skip_cont_bina = F) {

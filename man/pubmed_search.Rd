@@ -47,8 +47,8 @@ pubmed_search(
 
 }
 \seealso{
-\code{\link{shorten_names}},\code{\link{split-paste}},
-\code{\link{pubmed_search}},\code{\link{manipulate-set}}
+\code{\link{shorten_names}}, \code{\link{split_paste}},
+\code{\link{pubmed_search}}, \code{\link{manipulate_set}}
 }
 \author{
 Yulong Qin

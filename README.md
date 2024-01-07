@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of BioinfoRtools is to …
+The BioinfoRtools is A comprehensive bioinformatics R package toolbox
 
 ## Installation
 
@@ -14,6 +14,7 @@ You can install the development version of BioinfoRtools like so:
 
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("YulongQin/BioinfoRtools")
 ```
 
 ## Example
@@ -22,29 +23,72 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(BioinfoRtools)
+#> 
+#> 载入需要的程辑包：Biobase
+#> 载入需要的程辑包：BiocGenerics
+#> 
+#> 载入程辑包：'BiocGenerics'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     IQR, mad, sd, var, xtabs
+#> The following objects are masked from 'package:base':
+#> 
+#>     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+#>     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+#>     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+#>     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+#>     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+#>     table, tapply, union, unique, unsplit, which.max, which.min
+#> Welcome to Bioconductor
+#> 
+#>     Vignettes contain introductory material; view with
+#>     'browseVignettes()'. To cite Bioconductor, see
+#>     'citation("Biobase")', and for packages 'citation("pkgname")'.
+#> 
+#> 载入程辑包：'DynDoc'
+#> The following object is masked from 'package:BiocGenerics':
+#> 
+#>     path
+#> 
 ## basic example code
+# ?DEGs_DESeq2
+# ?DEGs_Wilcoxon
+# data(countdata)
+# data(coldata)
+res <- DEGs_DESeq2(
+  countdata=countdata,
+  group=coldata$condition,
+  case = "treated",
+  ctrl = "untreated",
+  covariate = NULL,
+  updown_thres = 1,
+  rate_sap = 0.1,
+  OUT_df_index = FALSE,
+  updown_index = FALSE,
+  p_value = 0.05,
+  padj_value = 0.05,
+  grp_nm = "DEGs_DESeq2",
+  dir_nm = "DEGs_DESeq2"
+)
+#> Warning in dir.create(output_dir, recursive = T):
+#> '.\outputdata\DEGs_DESeq2\DEGs_DESeq2'已存在
+#> converting counts to integer mode
+#> estimating size factors
+#> estimating dispersions
+#> gene-wise dispersion estimates
+#> mean-dispersion relationship
+#> final dispersion estimates
+#> fitting model and testing
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Here’s how to use some of the graphing functions`PCA` and `HTmap`:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+PCA(countdata=countdata,
+    group=coldata$condition, 
+    grp_nm = "PCA", 
+    scale = T)
+#> Too few points to calculate an ellipse
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/README-PCA-1.png" width="100%" />

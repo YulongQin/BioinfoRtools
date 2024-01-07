@@ -31,7 +31,7 @@ HTmap(df, iris$Species)
 }
 }
 \seealso{
-\code{\link{PCA}},\code{\link{HTmap}}
+\code{\link{PCA}}, \code{\link{HTmap}}
 }
 \author{
 Yulong Qin
