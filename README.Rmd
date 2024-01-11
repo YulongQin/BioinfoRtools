@@ -31,15 +31,13 @@ devtools::install_github("YulongQin/BioinfoRtools")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to conduct differential analysis of expression profiles:
 
-```{r example,echo=T}
+```{r DEGs_DESeq2,echo=T}
 library(BioinfoRtools)
+ls(package:BioinfoRtools)
+
 ## basic example code
-# ?DEGs_DESeq2
-# ?DEGs_Wilcoxon
-# data(countdata)
-# data(coldata)
 res <- DEGs_DESeq2(
   countdata=countdata,
   group=coldata$condition,
@@ -55,6 +53,18 @@ res <- DEGs_DESeq2(
   grp_nm = "DEGs_DESeq2",
   dir_nm = "DEGs_DESeq2"
 )
+```
+
+This is a basic example which shows you how to  conduct enrichment analysis of gene sets:
+```{r GO_KEGG,echo=T}
+GO_KEGG(
+  updown = genes,
+  simplify_index = F,
+  maxGSSize = 500,
+  grp_nm = "GO_KEGG",
+  dir_nm = "GO_KEGG"
+)
+
 ```
 
 Here's how to use some of the graphing functions`PCA` and `HTmap`:

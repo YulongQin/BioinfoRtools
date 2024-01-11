@@ -20,6 +20,10 @@
 #' @param group the group information
 #' @param log2_index whether to log2 the data
 #' @param scale_index whether to scale the data
+#' @param cluster_cols whether to cluster the columns
+#' @param cluster_rows whether to cluster the rows
+#' @param show_colnames whether to show the column names
+#' @param show_rownames whether to show the row names
 #'
 #' @return NULL
 #' @author Yulong Qin
@@ -40,7 +44,10 @@
 #' @importFrom dplyr across everything mutate if_else
 #' @export
 #'
-HTmap <- function(countdata, group, log2_index = T, scale_index = "row") {
+HTmap <- function(countdata,group,log2_index=T,scale_index="row",
+                  cluster_cols=F, cluster_rows=T,
+                  show_colnames=T, show_rownames=F){
+
   ### 1.library ####
   # suppressMessages({
   #   library(pheatmap)
@@ -53,15 +60,11 @@ HTmap <- function(countdata, group, log2_index = T, scale_index = "row") {
 
   ### 2.热图矩阵 ####
   hm_in <- countdata %>%
-    mutate(across(everything(), ~ if_else(is.na(.), 0, .))) %>% # 不应直接删除有缺失行na.omit()
+    mutate(across(everything(), ~ if_else(is.na(.), 0, .))) %>%  # 不应直接删除有缺失行na.omit()
     # filter(rowSums(.)>0) %>% # 不需要过滤行
-    {
-      if (log2_index) add(., 1) else .
-    } %>% # 理解+1与+10^6的区别
-    {
-      if (log2_index) log2(.) else .
-    } %>%
-    filter(apply(., 1, var) != 0) # filter中加apply可以对每行遍历
+    {if(log2_index) add(.,1) else .} %>% # 理解+1与+10^6的区别
+    {if(log2_index) log2(.) else .} %>%
+    filter(apply(.,1,var) != 0) # filter中加apply可以对每行遍历
 
   # countdata <- countdata[rowSums(countdata)>0,] # 删除全0行
   # hm_in <- log2(countdata+1)
@@ -69,7 +72,7 @@ HTmap <- function(countdata, group, log2_index = T, scale_index = "row") {
   #   na.omit()
 
   ### 3.行列注释 ####
-  group <- factor(group, levels = as.character(unique(group)))
+  group <- factor(group,levels = as.character(unique(group)))
   hm_ann_col <- data.frame(
     Group = group,
     row.names = colnames(hm_in) # 行名为样本,与分组对应
@@ -77,43 +80,38 @@ HTmap <- function(countdata, group, log2_index = T, scale_index = "row") {
   # color <- c('#0000CD','#DC143C') # pal_lancet()(2) %>% rev()
   color <- pal_lancet()(length(unique(group)))
   names(color) <- levels(group) # ctrl在前，case在后
-  hm_ann_colors <- list(
-    Group = alpha(color, 0.8) # 含有名字的向量
+  hm_ann_colors <-  list(
+    Group = alpha(color,0.8) # 含有名字的向量
   )
 
   ### 4.热图 ####
   p1 <- pheatmap(hm_in,
-    cluster_cols = F, # 行列聚类
-    cluster_rows = T,
-    scale = scale_index, # 行归一化z-score
-    # cellwidth = 6, #设定cellwidth，不设定cellheigh(跟随图片)
-    color = c(
-      colorRampPalette(colors = c("blue", "white"))(100),
-      colorRampPalette(colors = c("white", "red"))(100)
-    ),
-    border_color = NA, # "grey60"
-    main = "",
-    annotation_row = NULL,
-    annotation_col = hm_ann_col,
-    annotation_colors = hm_ann_colors,
-    show_colnames = F, # 行列名
-    show_rownames = T,
-    fontsize = 8,
-    fontsize_row = 6, # 行列名字体大小
-    fontsize_col = 6,
-    display_numbers = F, # 添加数字
-    silent = TRUE
-  )
-  as.ggplot(p1) +
-    theme(plot.margin = margin(0.4, 0.4, 0.4, 0.4)) # 调整边距
+                 cluster_cols = cluster_cols, #行列聚类
+                 cluster_rows = cluster_rows,
+                 scale=scale_index, #行归一化z-score
+                 # cellwidth = 6, #设定cellwidth，不设定cellheigh(跟随图片)
+                 color = c(colorRampPalette(colors = c("blue","white"))(100),
+                           colorRampPalette(colors = c("white","red"))(100)),
+                 border_color=NA, # "grey60"
+                 main = "",
+                 annotation_row = NULL,
+                 annotation_col = hm_ann_col,
+                 annotation_colors = hm_ann_colors,
+                 show_colnames = show_colnames, #行列名
+                 show_rownames = show_rownames,
+                 fontsize = 8,
+                 fontsize_row=6, #行列名字体大小
+                 fontsize_col=6,
+                 display_numbers = F, #添加数字
+                 silent = TRUE)
+  as.ggplot(p1)+
+    theme(plot.margin = margin(0.4,0.4,0.4,0.4)) # 调整边距
 }
 
 #### ----- Examples ------ ####
 if (F) {
   # 数据不用提前log2，可以绘制两组或多组，需要指定向量
   source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/HTmap.R")
-  df <- iris[1:4] %>%
-    t() %>%
-    as.data.frame()
-  HTmap(df, iris$Species)
+  df <- iris[1:4] %>% t() %>% as.data.frame()
+  HTmap(df,iris$Species)
 }

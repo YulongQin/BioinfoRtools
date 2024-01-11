@@ -4,7 +4,16 @@
 \alias{HTmap}
 \title{Draw heat maps according to groups}
 \usage{
-HTmap(countdata, group, log2_index = T, scale_index = "row")
+HTmap(
+  countdata,
+  group,
+  log2_index = T,
+  scale_index = "row",
+  cluster_cols = F,
+  cluster_rows = T,
+  show_colnames = T,
+  show_rownames = F
+)
 }
 \arguments{
 \item{countdata}{the count data matrix}
@@ -14,6 +23,14 @@ HTmap(countdata, group, log2_index = T, scale_index = "row")
 \item{log2_index}{whether to log2 the data}
 
 \item{scale_index}{whether to scale the data}
+
+\item{cluster_cols}{whether to cluster the columns}
+
+\item{cluster_rows}{whether to cluster the rows}
+
+\item{show_colnames}{whether to show the column names}
+
+\item{show_rownames}{whether to show the row names}
 }
 \description{
 Draw heat maps according to groups

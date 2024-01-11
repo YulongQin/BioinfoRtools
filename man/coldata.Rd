@@ -3,19 +3,18 @@
 \docType{data}
 \name{coldata}
 \alias{coldata}
-\title{Prices of over 50,000 round cut diamonds}
+\title{Meta-data of samples}
 \format{
-A data frame with 53940 rows and 10 variables:
+A data frame with 7 rows and 2 variables:
 \describe{
-\item{condition}{price in US dollars ($326--$18,823)}
-\item{type}{weight of the diamond (0.2--5.01)}
+\item{condition}{condition}
+\item{type}{type}
 }
 }
 \usage{
 coldata
 }
 \description{
-A dataset containing the prices and other attributes of almost 54,000
-diamonds. The variables are as follows:
+Meta-data of a sample of 7 samples and 2 clinical information samples.
 }
 \keyword{datasets}
