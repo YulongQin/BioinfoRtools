@@ -86,7 +86,11 @@ WGCNA_pipeline <- function(exp = NULL, # 输入原始的TPM即可，行为基因
       log2()
   }
   if(strict == T){
-    df_data <- df_data[rowSums(df_data)>rate_sap*ncol(df_data),]
+    if(rate_sap>1){
+      df_data <- df_data[rowSums(df_data>0)>rate_sap,]
+    }else{
+      df_data <- df_data[rowSums(df_data>0)>rate_sap*ncol(df_data),]
+    }
     df_data <- df_data[order(apply(df_data,1,mad), decreasing = T)[1:num_genes],]
   }
 
@@ -222,6 +226,9 @@ WGCNA_pipeline <- function(exp = NULL, # 输入原始的TPM即可，行为基因
     nThreads=threads,
     verbose = 3
   )
+  disableWGCNAThreads()
+  # stopImplicitCluster()
+
   cor <-  stats::cor
   save(net,file = paste0(output_dir,"/net.RData"))
   cat("strict: ",strict,"\n",sep = "",append = T,

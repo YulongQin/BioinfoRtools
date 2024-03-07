@@ -88,12 +88,12 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
       unique_target <- unique(example1_res_fil$target_symbol)
     }
     write.table(unique_pairs,
-                file = paste0(output_dir,grp_nm,"_",type_nm,".txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,".txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     unique_pairs_fil <- unique_pairs
     unique_pairs_fil <- unique_pairs_fil[which(unique_pairs_fil$support_type=="Functional MTI"),]
     write.table(unique_pairs_fil,
-                file = paste0(output_dir,grp_nm,"_",type_nm,"_valid.txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_valid.txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     tmp_gene <- unique_pairs_fil$mature_mirna_id # mRNA相关的miRNA
   }
@@ -125,12 +125,12 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
       unique_target <- unique(example1_res_fil$target_symbol)
     }
     write.table(unique_pairs,
-                file = paste0(output_dir,grp_nm,"_",type_nm,".txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,".txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     unique_pairs_fil <- unique_pairs
     unique_pairs_fil <- unique_pairs_fil[which(unique_pairs_fil$support_type=="Functional MTI"),]
     write.table(unique_pairs_fil,
-                file = paste0(output_dir,grp_nm,"_",type_nm,"_valid.txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_valid.txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     tmp_gene <- unique_pairs_fil$target_symbol # miRNA相关的mRNA
   }
@@ -163,12 +163,12 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
       unique_target <- unique(example1_res_fil$target_symbol)
     }
     write.table(unique_pairs,
-                file = paste0(output_dir,grp_nm,"_",type_nm,".txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,".txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     unique_pairs_fil <- unique_pairs
     unique_pairs_fil <- unique_pairs_fil[which(unique_pairs_fil$support_type=="Functional MTI"),]
     write.table(unique_pairs_fil,
-                file = paste0(output_dir,grp_nm,"_",type_nm,"_valid.txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_valid.txt"),
                 sep = "\t",col.names = NA,row.names = T,quote = F)
     tmp_gene <- unique_pairs_fil$target_symbol # miRNA相关的mRNA
 
@@ -190,7 +190,7 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
       miRNA_df <- mirtar[miRNA_index,] %>%
         filter(`Support Type`=="Functional MTI")
       write.table(miRNA_df,
-                  file = paste0(output_dir,grp_nm,"_",type_nm,"_mirtar.txt"),
+                  file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_mirtar.txt"),
                   sep = "\t",col.names = NA,row.names = T,quote = F)
 
       ## local NcPath file
@@ -198,7 +198,7 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
       miRNA_df <- NcPath_mi[miRNA_index,] %>%
         filter(`Support Type`=="Functional MTI")
       write.table(miRNA_df,
-                  file = paste0(output_dir,grp_nm,"_",type_nm,"_NcPath.txt"),
+                  file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_NcPath.txt"),
                   sep = "\t",col.names = NA,row.names = T,quote = F)
     }
   }
@@ -206,7 +206,7 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
   ### 5.pubmedabstract ####
   if(!is.null(miRNA_genes)){
     if(search_index){
-      dir.create(paste0(output_dir,grp_nm,"_",type_nm,"_pubmed/"))
+      dir.create(paste0(output_dir,"/",grp_nm,"_",type_nm,"_pubmed/"))
       if(!is_empty(tmp_gene)){
         for(i in 1:length(tmp_gene)){
           tryCatch({
@@ -222,7 +222,7 @@ miRNA_mRNA <- function(mRNA_genes = NULL, # 输入up/down,软件不能区分mRNA
                                                   format = "abstract", # abstract格式
                                                   encoding = "UTF8")
             cat(my_abstracts_txt,
-                file = paste0(output_dir,grp_nm,"_",type_nm,"_pubmed/",i_gene,".txt"),
+                file = paste0(output_dir,"/",grp_nm,"_",type_nm,"_pubmed/",i_gene,".txt"),
                 sep = "\n")
           },error=function(e){print(e)})
         }

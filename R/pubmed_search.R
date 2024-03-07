@@ -16,9 +16,11 @@
 #'
 #' @title serach pubmed by keywords
 #' @description serach pubmed by keywords
+#'
 #' @param search_words keywords
 #' @param fixed_words fixed words
 #' @param sep the sep of keywords and fixed words
+#' @param num_article the number of article
 #' @param api_key the api_key of pubmed
 #' @param grp_nm the group name
 #' @param dir_nm the dir name
@@ -41,6 +43,7 @@
 #' @export
 #'
 pubmed_search <- function(search_words = NULL, fixed_words = NULL, sep = "AND",
+                          num_article = 20,
                           api_key = "54d30eb11bfb539cfbab47558615ccf9e809",
                           grp_nm = "pubmed_search", dir_nm = "pubmed_search") {
   ### 1.library ####
@@ -72,7 +75,7 @@ pubmed_search <- function(search_words = NULL, fixed_words = NULL, sep = "AND",
     my_abstracts_txt <- fetch_pubmed_data(
       my_entrez_id,
       retstart = 0,
-      retmax = 20,
+      retmax = num_article,
       format = "abstract", # abstract格式
       encoding = "UTF8"
     )
@@ -91,6 +94,7 @@ if (F) {
   source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/pubmed_search.R")
   pubmed_search(
     search_words = NULL, fixed_words = NULL, sep = "AND",
+    num_article = 20,
     api_key = "54d30eb11bfb539cfbab47558615ccf9e809",
     grp_nm = "pubmed_search", dir_nm = "pubmed_search"
   )

@@ -5,18 +5,23 @@
 \alias{PCA.data.frame}
 \title{PCA plots are drawn according to groups}
 \usage{
-PCA(countdata, group, grp_nm = "PCA", scale = T)
+PCA(countdata, group, scale_index = T, method = "PCA", grp_nm = "PCA")
 
-\method{PCA}{data.frame}(countdata, group, grp_nm = "PCA", scale = T)
+\method{PCA}{data.frame}(countdata, group, scale_index = T, method = "PCA", grp_nm = "PCA")
 }
 \arguments{
 \item{countdata}{the count data matrix}
 
 \item{group}{the group information}
 
-\item{grp_nm}{the name of the group}
+\item{scale_index}{whether to scale the data}
 
-\item{scale}{whether to scale the data}
+\item{method}{the method of dimensionality reduction}
+
+\item{grp_nm}{the name of the group}
+}
+\value{
+plot
 }
 \description{
 PCA plots are drawn according to groups
@@ -40,10 +45,12 @@ this function use \code{ggplot()} to draw PCA plots according to groups
 
 # this is a example
 source(file = "F:/Bioinformatic_repository/02_R/code_R/A_Script_Function/PCA.R")
-df <- iris[1:4] \%>\%
-  t() \%>\%
-  as.data.frame()
-PCA(df, iris$Species, scale = F)
+df <- iris[1:4] \%>\% t() \%>\% as.data.frame()
+PCA(df,iris$Species,scale_index = T
+PCA(df,iris$Species,method = "UMAP",scale_index = T)
+PCA(df,iris$Species,method = "tSNE",scale_index = T)
+PCA(df,iris$Species,method = "LDA",scale_index = T)
+PCA(df,iris$Species,method = "lda",scale_index = T)
 }
 
 }

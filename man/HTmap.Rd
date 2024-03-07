@@ -11,6 +11,9 @@ HTmap(
   scale_index = "row",
   cluster_cols = F,
   cluster_rows = T,
+  clustering_distance_rows = "euclidean",
+  clustering_distance_cols = "euclidean",
+  clustering_method = "complete",
   show_colnames = T,
   show_rownames = F
 )
@@ -28,9 +31,18 @@ HTmap(
 
 \item{cluster_rows}{whether to cluster the rows}
 
+\item{clustering_distance_rows}{the distance method for clustering rows}
+
+\item{clustering_distance_cols}{the distance method for clustering columns}
+
+\item{clustering_method}{the clustering method}
+
 \item{show_colnames}{whether to show the column names}
 
 \item{show_rownames}{whether to show the row names}
+}
+\value{
+plot
 }
 \description{
 Draw heat maps according to groups

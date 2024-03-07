@@ -16,6 +16,7 @@
 #'
 #' @title Draw heat maps according to groups
 #' @description Draw heat maps according to groups
+#'
 #' @param countdata the count data matrix
 #' @param group the group information
 #' @param log2_index whether to log2 the data
@@ -24,8 +25,11 @@
 #' @param cluster_rows whether to cluster the rows
 #' @param show_colnames whether to show the column names
 #' @param show_rownames whether to show the row names
+#' @param clustering_distance_rows the distance method for clustering rows
+#' @param clustering_distance_cols the distance method for clustering columns
+#' @param clustering_method the clustering method
 #'
-#' @return NULL
+#' @return plot
 #' @author Yulong Qin
 #' @seealso \code{\link{PCA}}, \code{\link{HTmap}}
 #'
@@ -46,6 +50,9 @@
 #'
 HTmap <- function(countdata,group,log2_index=T,scale_index="row",
                   cluster_cols=F, cluster_rows=T,
+                  clustering_distance_rows="euclidean",
+                  clustering_distance_cols="euclidean",
+                  clustering_method = "complete",
                   show_colnames=T, show_rownames=F){
 
   ### 1.library ####
@@ -90,8 +97,8 @@ HTmap <- function(countdata,group,log2_index=T,scale_index="row",
                  cluster_rows = cluster_rows,
                  scale=scale_index, #行归一化z-score
                  # cellwidth = 6, #设定cellwidth，不设定cellheigh(跟随图片)
-                 color = c(colorRampPalette(colors = c("blue","white"))(100),
-                           colorRampPalette(colors = c("white","red"))(100)),
+                 color = c(colorRampPalette(colors = c("#3B4992FF","white"))(100),
+                           colorRampPalette(colors = c("white","#EE0000FF"))(100)),
                  border_color=NA, # "grey60"
                  main = "",
                  annotation_row = NULL,
@@ -99,13 +106,21 @@ HTmap <- function(countdata,group,log2_index=T,scale_index="row",
                  annotation_colors = hm_ann_colors,
                  show_colnames = show_colnames, #行列名
                  show_rownames = show_rownames,
+
+                 clustering_distance_rows=clustering_distance_rows,
+                 clustering_distance_cols=clustering_distance_cols,
+                 clustering_method = clustering_method,
+
                  fontsize = 8,
                  fontsize_row=6, #行列名字体大小
                  fontsize_col=6,
                  display_numbers = F, #添加数字
                  silent = TRUE)
+  plot.new()
   as.ggplot(p1)+
     theme(plot.margin = margin(0.4,0.4,0.4,0.4)) # 调整边距
+
+  return(p1)
 }
 
 #### ----- Examples ------ ####

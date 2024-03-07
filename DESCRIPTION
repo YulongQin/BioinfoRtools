@@ -26,6 +26,7 @@ Imports:
     GSVA,
     limma,
     magrittr,
+    MASS,
     Mfuzz,
     multiMiR,
     org.Hs.eg.db,
@@ -33,10 +34,12 @@ Imports:
     pheatmap,
     psych,
     rlang,
+    Rtsne,
     scales,
     stats,
     stringr,
     tibble,
+    umap,
     utils,
     WGCNA
 Suggests: 

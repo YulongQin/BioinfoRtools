@@ -221,7 +221,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
 
   ### 5.limma_DEGs ####
   ## 5.1 GSVA_GO_BP
-  if (!is.null(exp_df) | !is.null(gsva_mat_go_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(gsva_mat_go_scale) & !is.null(group)) {
     cat(paste0("5.1 limma GSVA_GO_BP start at ", Sys.time(), "\n"))
     group <- group %>%
       factor(levels = c(ctrl, case))
@@ -274,7 +274,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 5.2 GSVA_KEGG
-  if (!is.null(exp_df) | !is.null(gsva_mat_kegg_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(gsva_mat_kegg_scale) & !is.null(group)) {
     cat(paste0("5.2 limma GSVA_KEGG start at ", Sys.time(), "\n"))
     group <- group %>%
       factor(levels = c(ctrl, case))
@@ -327,7 +327,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 5.3 ssGSEA_GO_BP
-  if (!is.null(exp_df) | !is.null(ssgsea_mat_go_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(ssgsea_mat_go_scale) & !is.null(group)) {
     cat(paste0("5.3 limma ssGSEA_GO_BP start at ", Sys.time(), "\n"))
     group <- group %>%
       factor(levels = c(ctrl, case))
@@ -380,7 +380,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 5.4 ssGSAE_KEGG
-  if (!is.null(exp_df) | !is.null(ssgsea_mat_kegg_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(ssgsea_mat_kegg_scale) & !is.null(group)) {
     cat(paste0("5.4 limma ssGSEA_KEGG start at ", Sys.time(), "\n"))
     group <- group %>%
       factor(levels = c(ctrl, case))
@@ -434,7 +434,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
 
   ### 6.pathway heatmap ####
   ## 6.1 GSVA_GO_BP
-  if (!is.null(exp_df) | !is.null(gsva_mat_go_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(gsva_mat_go_scale) & !is.null(group)) {
     cat(paste0("6.1 GSVA_GO_BP start at ", Sys.time(), "\n"))
     DEGs_gsva_go$Des_short <- sapply(DEGs_gsva_go$gene, shorten_names)
     DEGs_gsva_go <- DEGs_gsva_go %>%
@@ -501,7 +501,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 6.2 GSVA_KEGG
-  if (!is.null(exp_df) | !is.null(gsva_mat_kegg_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(gsva_mat_kegg_scale) & !is.null(group)) {
     cat(paste0("6.2 GSVA_KEGG start at ", Sys.time(), "\n"))
     DEGs_gsva_kegg$Des_short <- sapply(DEGs_gsva_kegg$gene, shorten_names)
     DEGs_gsva_kegg <- DEGs_gsva_kegg %>%
@@ -568,7 +568,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 6.3 ssGSEA_GO_BP
-  if (!is.null(exp_df) | !is.null(ssgsea_mat_go_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(ssgsea_mat_go_scale) & !is.null(group)) {
     cat(paste0("6.3 ssGSEA_GO_BP start at ", Sys.time(), "\n"))
     DEGs_ssgsea_go$Des_short <- sapply(DEGs_ssgsea_go$gene, shorten_names)
     DEGs_ssgsea_go <- DEGs_ssgsea_go %>%
@@ -635,7 +635,7 @@ GSVA_ssGSEA <- function(exp_df = NULL, # 输入的是原始的TPM矩阵，
   }
 
   ## 6.4 ssGSEA_KEGG
-  if (!is.null(exp_df) | !is.null(ssgsea_mat_kegg_scale) | !is.null(group)) {
+  if (!is.null(exp_df) | !is.null(ssgsea_mat_kegg_scale) & !is.null(group)) {
     cat(paste0("6.4 ssGSEA_KEGG start at ", Sys.time(), "\n"))
     DEGs_ssgsea_kegg$Des_short <- sapply(DEGs_ssgsea_kegg$gene, shorten_names)
     DEGs_ssgsea_kegg <- DEGs_ssgsea_kegg %>%

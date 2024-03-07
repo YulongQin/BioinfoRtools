@@ -8,6 +8,7 @@ pubmed_search(
   search_words = NULL,
   fixed_words = NULL,
   sep = "AND",
+  num_article = 20,
   api_key = "54d30eb11bfb539cfbab47558615ccf9e809",
   grp_nm = "pubmed_search",
   dir_nm = "pubmed_search"
@@ -19,6 +20,8 @@ pubmed_search(
 \item{fixed_words}{fixed words}
 
 \item{sep}{the sep of keywords and fixed words}
+
+\item{num_article}{the number of article}
 
 \item{api_key}{the api_key of pubmed}
 

@@ -6,6 +6,7 @@
 \usage{
 Clinic_corr(
   continuous = NULL,
+  continuous2 = NULL,
   binary = NULL,
   grp_nm = "Clinic_corr1",
   dir_nm = "Clinic_corr",
@@ -16,6 +17,8 @@ Clinic_corr(
 }
 \arguments{
 \item{continuous}{the continuous data.frame}
+
+\item{continuous2}{the continuous2 data.frame}
 
 \item{binary}{the binary data.frame}
 
